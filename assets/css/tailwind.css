@@ -7,3 +7,9 @@ html, body {
     background-color: white;
     color: #313131;
 }
+
+input, select, textarea {
+    background-color: white;
+    color: #313131;
+    outline: none !important;
+}

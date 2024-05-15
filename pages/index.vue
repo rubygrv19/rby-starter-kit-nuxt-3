@@ -107,7 +107,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-white py-[72px] px-[72px] xs:py-[40px] xs:px-[24px]">
+		<div class="bg-white py-[72px] px-[320px] xs:py-[40px] xs:px-[24px]">
 			<div class="text-center mb-6">
 				<div class="mb-2">
 					<div class="text-[32px] text-[#313131] font-bold xs:text-xl">
@@ -116,6 +116,63 @@
 				</div>
 				<div class="text-base text-[#757575] font-normal xs:text-xs">
 					If you have a complaint, please contact us
+				</div>
+			</div>
+			<div>
+				<div class="mb-6 xs:mb-4">
+					<div class="mb-1">
+						<div class="text-base text-[#313131] font-normal">
+							Full name<span class="text-[#FF0000]">*</span>
+						</div>
+					</div>
+					<input type="text" class="border border-[#CACACB] rounded w-full py-[13px] px-4"
+						placeholder="Please input your full name" />
+				</div>
+				<div class="mb-6 xs:mb-4">
+					<div class="mb-1">
+						<div class="text-base text-[#313131] font-normal">
+							Division<span class="text-[#FF0000]">*</span>
+						</div>
+					</div>
+					<select class="border border-[#CACACB] rounded w-full py-[13px] px-4">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+					</select>
+				</div>
+				<div class="mb-6 xs:mb-4">
+					<div class="mb-1">
+						<div class="text-base text-[#313131] font-normal">
+							Message<span class="text-[#FF0000]">*</span>
+						</div>
+					</div>
+					<textarea rows="4" class="border border-[#CACACB] rounded w-full py-[13px] px-4"
+						placeholder="Input your message here"></textarea>
+				</div>
+				<div class="mb-6 xs:mb-4">
+					<div class="mb-1">
+						<div class="text-base text-[#313131] font-normal">
+							Attach your file (Optional)
+						</div>
+					</div>
+					<div class="w-full md:flex">
+						<div class="flex gap-x-4 border border-[#F58220] rounded cursor-pointer py-[13px] px-4 xs:justify-center">
+							<div>
+								<img src="/icons/file.svg" alt="file" />
+							</div>
+							<div class="text-base text-[#F58220] font-normal">
+								Attach your file
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<button type="button" class="bg-[#F58220] rounded-lg text-center w-full py-[13px]">
+						<div class="text-base text-white font-semibold">
+							Submit
+						</div>
+					</button>
 				</div>
 			</div>
 		</div>

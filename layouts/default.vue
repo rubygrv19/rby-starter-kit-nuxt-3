@@ -14,6 +14,9 @@
 			<div>
 				<slot />
 			</div>
+			<div>
+				<AppFooter />
+			</div>
 		</div>
 	</div>
 </template>

@@ -30,6 +30,13 @@
 			image: '/images/our-service.svg'
 		}
 	])
+
+	const formGetInTouch = ref({
+        fullname: null,
+        division: null,
+		message: null,
+		attachment: null
+    });
 </script>
 
 <template>
@@ -122,33 +129,40 @@
 				<div class="mb-6 xs:mb-4">
 					<div class="mb-1">
 						<div class="text-base text-[#313131] font-normal">
-							Full name<span class="text-[#FF0000]">*</span>
+							Full name
+							<span class="text-[#FF0000]">*</span>
 						</div>
 					</div>
-					<input type="text" class="border border-[#CACACB] rounded w-full py-[13px] px-4"
-						placeholder="Please input your full name" />
+					<BaseInput
+                        type="text"
+                        v-model="formGetInTouch.fullname"
+                        placeholder="Please input your full name"
+                    />
 				</div>
 				<div class="mb-6 xs:mb-4">
 					<div class="mb-1">
 						<div class="text-base text-[#313131] font-normal">
-							Division<span class="text-[#FF0000]">*</span>
+							Division
+							<span class="text-[#FF0000]">*</span>
 						</div>
 					</div>
-					<select class="border border-[#CACACB] rounded w-full py-[13px] px-4">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-					</select>
+					<BaseSelect
+						v-model="formGetInTouch.division"
+						:lov="['1', '2', '3']"
+					/>
 				</div>
 				<div class="mb-6 xs:mb-4">
 					<div class="mb-1">
 						<div class="text-base text-[#313131] font-normal">
-							Message<span class="text-[#FF0000]">*</span>
+							Message
+							<span class="text-[#FF0000]">*</span>
 						</div>
 					</div>
-					<textarea rows="4" class="border border-[#CACACB] rounded w-full py-[13px] px-4"
-						placeholder="Input your message here"></textarea>
+					<BaseTextarea
+						rows="4"
+						v-model="formGetInTouch.message"
+						placeholder="Input your message here"
+					/>
 				</div>
 				<div class="mb-6 xs:mb-4">
 					<div class="mb-1">
@@ -168,11 +182,10 @@
 					</div>
 				</div>
 				<div>
-					<button type="button" class="bg-[#F58220] rounded-lg text-center w-full py-[13px]">
-						<div class="text-base text-white font-semibold">
-							Submit
-						</div>
-					</button>
+					<BaseButton
+                        type="button"
+                        label="Submit"
+                    />
 				</div>
 			</div>
 		</div>

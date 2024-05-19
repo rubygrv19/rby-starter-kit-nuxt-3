@@ -1,8 +1,19 @@
+<script setup>
+    const router = useIonRouter();
+
+    const isLogin = useCookie('isLogin');
+
+	const onLogout = () => {
+		isLogin.value = null;
+        router.push('/auth/login');
+	}
+</script>
+
 <template>
 	<div>
 		<div class="flex items-center">
 			<div>
-				<div class="bg-[#313131] rounded-lg p-2">
+				<div class="bg-[#313131] rounded-lg p-2" @click="onLogout()">
 					<img src="/icons/sidebar.svg" alt="sidebar" />
 				</div>
 			</div>

@@ -1,3 +1,13 @@
+<script setup>
+    const router = useIonRouter();
+
+	const { data: listHeader } = await useFetch('/api/our-service');
+
+	const goPageHeader = (url) => {
+        router.push(url);
+    };
+</script>
+
 <template>
 	<div>
 		<div class="flex items-center">
@@ -6,23 +16,18 @@
 			</div>
 			<div class="mx-auto">
 				<ul class="flex gap-x-8">
-					<li class="text-sm text-[#F58220] font-bold cursor-pointer">
+					<li 
+						@click="goPageHeader('/')"
+						class="text-sm text-[#F58220] font-bold cursor-pointer"
+					>
 						Home
 					</li>
-					<li class="text-sm text-[#313131] font-normal cursor-pointer">
-						Meeting room reservation
-					</li>
-					<li class="text-sm text-[#313131] font-normal cursor-pointer">
-						Car reservation
-					</li>
-					<li class="text-sm text-[#313131] font-normal cursor-pointer">
-						Others help request
-					</li>
-					<li class="text-sm text-[#313131] font-normal cursor-pointer">
-						Assets management
-					</li>
-					<li class="text-sm text-[#313131] font-normal cursor-pointer">
-						Stationary/IT Supply
+					<li 
+						v-for="(item, index) of listHeader.result.data" :key="index"
+						@click="goPageHeader(item.link)"
+						class="text-sm text-[#313131] font-normal cursor-pointer"
+					>
+						{{ item.name }}
 					</li>
 				</ul>
 			</div>

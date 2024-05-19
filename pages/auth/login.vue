@@ -5,7 +5,10 @@
 
     const router = useIonRouter();
 
+    const isLogin = useCookie('isLogin');
+
     const isError = ref(false);
+    const isShowPassword = ref('password');
 
     const formLogin = ref({
         username: null,
@@ -16,9 +19,14 @@
         router.push('/');
     };
 
+    const onTogglePassword = () => {
+        isShowPassword.value = isShowPassword.value === 'password' ? 'text' : 'password';
+    };
+
     const onLogin = () => {
         if (formLogin.value.username === 'admin' && formLogin.value.password === 'admin') {
             goPageHome();
+            isLogin.value = true;
         } else {
             isError.value = true;
         }
@@ -65,11 +73,15 @@
                         </div>
                     </div>
                     <BaseInput
-                        type="password" 
+                        :type="isShowPassword" 
                         v-model="formLogin.password"
                         placeholder="Enter your password"
                         :error="isError"
-                        messageError="The password you entered is incorrect, please re-enter!"
+                        errorType="danger"
+                        errorMessage="The password you entered is incorrect, please re-enter!"
+                        icon="/icons/eyes.svg"
+                        iconPosition="right"
+                        @iconOnClick="onTogglePassword()"
                     />
                 </div>
                 <div>
@@ -78,6 +90,7 @@
                         label="Login"
                         :disabled="!formLogin.username || !formLogin.password"
                         @click="onLogin()"
+                        class="w-full"
                     />
                 </div>
             </div>

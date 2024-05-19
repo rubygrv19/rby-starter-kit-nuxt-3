@@ -1,47 +1,25 @@
 <script setup>
-	const ourService = ref([{
-			title: 'Meeting Room Reservation',
-			desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-			link: null,
-			image: '/images/our-service.svg'
-		},
-		{
-			title: 'Car Reservation',
-			desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-			link: null,
-			image: '/images/our-service.svg'
-		},
-		{
-			title: 'Others Help Request',
-			desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-			link: null,
-			image: '/images/our-service.svg'
-		},
-		{
-			title: 'Assets Management',
-			desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-			link: null,
-			image: '/images/our-service.svg'
-		},
-		{
-			title: 'Stationary/IT Supply',
-			desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-			link: null,
-			image: '/images/our-service.svg'
-		}
-	])
+    const router = useIonRouter();
 
 	const formGetInTouch = ref({
-        fullname: null,
-        division: null,
+		fullname: null,
+		division: null,
 		message: null,
 		attachment: null
-    });
+	});
+
+	const goPageOurService = (url) => {
+        router.push(url);
+    };
+
+	const { data: listOurService } = await useFetch('/api/our-service');
+	const { data: listDivision } = await useFetch('/api/lov/division');
+	
 </script>
 
 <template>
 	<div>
-		<div class="bg-white py-[72px] px-[72px] xs:py-[40px] xs:px-[24px]">
+		<div class="bg-white py-[72px] px-[72px] xs:py-10 xs:px-6">
 			<div class="flex items-center">
 				<div>
 					<div class="text-5xl text-[#313131] font-extrabold mb-6 xs:text-2xl xs:text-center xs:mb-4">
@@ -74,16 +52,20 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-[#F2F2F2] py-[48px] px-[72px] xs:py-[24px] xs:px-[24px]">
+		<div class="bg-[#F2F2F2] py-12 px-[72px] xs:py-6 xs:px-6">
 			<div class="text-center mb-12 xs:mb-4">
 				<div class="text-[32px] text-[#313131] font-bold xs:text-xl">
 					Our Service
 				</div>
 			</div>
-			<div class="grid grid-cols-3 gap-6 xs:grid-cols-3 xs:gap-4">
-				<div v-for="(item, index) of ourService" :key="index">
-					<div class="bg-white rounded-lg p-4 xs:p-2 xs:h-full"
-						style="box-shadow: 0px 4px 8px 0px #0000000D;">
+			<div class="grid grid-cols-3 gap-6 xs:grid-cols-2 xs:gap-4">
+				<div v-for="(item, index) of listOurService.result.data" :key="index">
+					<div 
+						class="bg-white rounded-lg p-4 xs:py-5 xs:px-2 xs:h-full"
+						style="box-shadow: 0px 4px 8px 0px #0000000D;"
+						@click="goPageOurService(item.link)"
+						@touchend="goPageOurService(item.link)"
+					>
 						<div class="mb-4 xs:flex xs:justify-center xs:mb-2">
 							<div class="xs:hidden">
 								<img src="/images/our-service.svg" alt="our-service" />
@@ -96,7 +78,7 @@
 							<div class="mb-2 xs:mb-0">
 								<div
 									class="text-xl text-[#313131] font-bold xs:text-xs xs:font-semibold xs:text-center">
-									{{ item.title }}
+									{{ item.name }}
 								</div>
 							</div>
 							<div class="text-base text-[#757575] font-normal xs:hidden">
@@ -104,17 +86,17 @@
 							</div>
 						</div>
 						<div class="xs:hidden">
-							<button type="button" class="bg-[#F58220] rounded-lg py-[13px] px-8">
-								<div class="text-base text-white font-semibold">
-									Apply Request
-								</div>
-							</button>
+							<BaseButton
+								type="button"
+								label="Apply Request"
+								@click="goPageOurService(item.link)"
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="bg-white py-[72px] px-[320px] xs:py-[40px] xs:px-[24px]">
+		<div class="bg-white py-[72px] px-[320px] xs:py-10 xs:px-6">
 			<div class="text-center mb-6">
 				<div class="mb-2">
 					<div class="text-[32px] text-[#313131] font-bold xs:text-xl">
@@ -148,7 +130,7 @@
 					</div>
 					<BaseSelect
 						v-model="formGetInTouch.division"
-						:lov="['1', '2', '3']"
+						:lov="listDivision.result.data"
 					/>
 				</div>
 				<div class="mb-6 xs:mb-4">
@@ -171,12 +153,14 @@
 						</div>
 					</div>
 					<div class="w-full md:flex">
-						<div class="flex gap-x-4 border border-[#F58220] rounded cursor-pointer py-[13px] px-4 xs:justify-center">
-							<div>
-								<img src="/icons/file.svg" alt="file" />
-							</div>
-							<div class="text-base text-[#F58220] font-normal">
-								Attach your file
+						<div class="w-full border border-[#F58220] rounded cursor-pointer py-[13px] px-4 xs:justify-center">
+							<div class="flex justify-center items-center gap-x-4">
+								<div>
+									<img src="/icons/attachment.svg" alt="file" />
+								</div>
+								<div class="text-base text-[#F58220] font-normal">
+									Attach your file
+								</div>
 							</div>
 						</div>
 					</div>
@@ -185,6 +169,7 @@
 					<BaseButton
                         type="button"
                         label="Submit"
+						class="w-full"
                     />
 				</div>
 			</div>

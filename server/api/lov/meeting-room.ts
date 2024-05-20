@@ -5,15 +5,15 @@ export default defineEventHandler((event) => {
             statusCode: 200,
             data: [
                 {
-                    label: 'Room A',
+                    label: 'Room A (Max 10 person)',
                     value: 5,
                 },
                 {
-                    label: 'Room B',
+                    label: 'Room B (Max 10 person)',
                     value: 10,
                 },
                 {
-                    label: 'Room C',
+                    label: 'Room C (Max 4 person)',
                     value: 4,
                 }
             ]

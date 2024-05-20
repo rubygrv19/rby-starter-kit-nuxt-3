@@ -1,11 +1,16 @@
 <script setup>
+    import { LOV_MEETING_ROOM } from '@/public/data/lov/meeting-room.ts';
+
     definePageMeta({
         layout: 'blank'
     });
 
     const router = useIonRouter();
 
+    const listMeetingRoom = ref(LOV_MEETING_ROOM.result);
+
     const isError = ref(false);
+    const isSnackRequest = ref(false);
 
     const formBookMeetingRooms = ref({
 		meetingName: null,
@@ -20,8 +25,6 @@
 		remark: null
 	});
 
-    const isSnackRequest = ref(false);
-
     const goPageMeetingRoomReservation = () => {
         router.push('/meeting-room-reservation');
     };
@@ -30,7 +33,16 @@
         console.log(formBookMeetingRooms.value);
     };
 
-	const { data: listMeetingRoom } = await useFetch('/api/lov/meeting-room');
+    // const getListMeetingRoom = async () => {
+	// 	const { data } = await useFetch('/api/lov/meeting-room');
+	// 	if (data.value.result.statusCode === 200) {
+	// 		listMeetingRoom.value = data.value.result;
+	// 	};
+	// };
+
+	// onMounted(async () => {
+	// 	await getListMeetingRoom();
+    // });
 
 </script>
 
@@ -160,7 +172,7 @@
                             </div>
                             <BaseSelect
                                 v-model="formBookMeetingRooms.chooseRoom"
-                                :lov="listMeetingRoom.result.data"
+                                :lov="listMeetingRoom.data"
                                 :error="isError"
                                 errorType="warning"
                                 errorMessage="The meet room has been booked, you can still book but enter the waiting list room."

@@ -1,11 +1,24 @@
 <script setup>
+	import { OUR_SERVICE } from '@/public/data/our-service.ts';
+
     const router = useIonRouter();
 
-	const { data: listHeader } = await useFetch('/api/our-service');
+	const listHeader = ref(OUR_SERVICE.result);
 
 	const goPageHeader = (url) => {
         router.push(url);
     };
+
+	// const getListHeader = async () => {
+	// 	const { data } = await useFetch('/api/our-service');
+	// 	if (data.value.result.statusCode === 200) {
+	// 		listHeader.value = data.value.result;
+	// 	};
+	// };
+
+	// onMounted(async () => {
+	// 	await getListHeader();
+	// });
 </script>
 
 <template>
@@ -23,7 +36,7 @@
 						Home
 					</li>
 					<li 
-						v-for="(item, index) of listHeader.result.data" :key="index"
+						v-for="(item, index) of listHeader.data" :key="index"
 						@click="goPageHeader(item.link)"
 						class="text-sm text-[#313131] font-normal cursor-pointer"
 					>

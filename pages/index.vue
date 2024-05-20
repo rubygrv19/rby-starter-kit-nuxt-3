@@ -1,5 +1,11 @@
 <script setup>
+	import { OUR_SERVICE } from '@/public/data/our-service.ts';
+	import { LOV_DIVISION } from '@/public/data/lov/division.ts';
+
     const router = useIonRouter();
+
+	const listOurService = ref(OUR_SERVICE.result);
+	const listDivision = ref(LOV_DIVISION.result);
 
 	const formGetInTouch = ref({
 		fullname: null,
@@ -12,8 +18,26 @@
         router.push(url);
     };
 
-	const { data: listOurService } = await useFetch('/api/our-service');
-	const { data: listDivision } = await useFetch('/api/lov/division');
+	// const getListOurService = async () => {
+	// 	const { data } = await useFetch('/api/our-service');
+	// 	if (data.value.result.statusCode === 200) {
+	// 		listOurService.value = data.value.result;
+	// 	};
+	// };
+
+	// const getListDivision = async () => {
+	// 	const { data } = await useFetch('/api/lov/division');
+	// 	if (data.value.result.statusCode === 200) {
+	// 		listDivision.value = data.value.result;
+	// 	};
+	// };
+
+	// onMounted(async () => {
+	// 	await getListOurService();
+	// 	await getListDivision();
+    // });
+
+
 	
 </script>
 
@@ -59,7 +83,7 @@
 				</div>
 			</div>
 			<div class="grid grid-cols-3 gap-6 xs:grid-cols-2 xs:gap-4">
-				<div v-for="(item, index) of listOurService.result.data" :key="index">
+				<div v-for="(item, index) of listOurService.data" :key="index">
 					<div 
 						class="bg-white rounded-lg p-4 xs:py-5 xs:px-2 xs:h-full"
 						style="box-shadow: 0px 4px 8px 0px #0000000D;"
@@ -130,7 +154,7 @@
 					</div>
 					<BaseSelect
 						v-model="formGetInTouch.division"
-						:lov="listDivision.result.data"
+						:lov="listDivision.data"
 					/>
 				</div>
 				<div class="mb-6 xs:mb-4">

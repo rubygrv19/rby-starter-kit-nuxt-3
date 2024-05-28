@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 	],
 	googleFonts: {
 		families: {
-			Nunito: true,
+			Poppins: true,
 		},
 		download: true
 	}

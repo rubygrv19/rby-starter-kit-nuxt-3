@@ -4,16 +4,16 @@
 			<ion-tabs>
 				<ion-router-outlet />
 
-				<ion-tab-bar slot="bottom">
-					<ion-tab-button tab="home" href="/mobile/home">
+				<ion-tab-bar>
+					<ion-tab-button tab="home" href="/modules/home">
 						<ion-icon :icon="ioniconsHomeOutline" />
 					</ion-tab-button>
 
-					<ion-tab-button tab="tab1" href="/mobile/tabs/tab1">
+					<ion-tab-button tab="tab1" href="#">
 						<ion-icon :icon="ioniconsQrCodeOutline" />
 					</ion-tab-button>
 
-					<ion-tab-button tab="tab2" href="/mobile/profile">
+					<ion-tab-button tab="tab2" href="/modules/profile">
 						<ion-icon :icon="ioniconsPersonOutline" />
 					</ion-tab-button>
 				</ion-tab-bar>

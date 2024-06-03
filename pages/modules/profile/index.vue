@@ -1,0 +1,10 @@
+<template>
+	<ion-page>
+		<ion-header>
+			<ion-toolbar>
+				<ion-title>Profile</ion-title>
+			</ion-toolbar>
+		</ion-header>
+		<ion-content>Profile</ion-content>
+	</ion-page>
+</template>

@@ -1,12 +1,13 @@
 <script setup>
 	definePageMeta({
-		layout: 'web-auth',
+		layout: 'blank',
 	});
-
 </script>
 
 <template>
-	<div>
-		<div>Sign Up</div>
-	</div>
+	<ion-page>
+		<ion-content>
+			<div>Sign Up</div>
+		</ion-content>
+	</ion-page>
 </template>

@@ -1,7 +1,5 @@
 <template>
-	<ion-app>
-		<NuxtLayout>
-			<NuxtPage />
-		</NuxtLayout>
-	</ion-app>
+	<NuxtLayout>
+		<NuxtPage />
+	</NuxtLayout>
 </template>

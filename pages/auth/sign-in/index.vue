@@ -1,6 +1,6 @@
 <script setup>
 	definePageMeta({
-		layout: 'web-auth',
+		layout: 'auth',
 	});
 </script>
 

@@ -1,18 +1,15 @@
-<script setup>
-	definePageMeta({
-		layout: 'web-blank',
-	});
-
-</script>
-
 <template>
 	<div>
 		<div class="grid grid-cols-2">
 			<div>
-				<NuxtLink to="/web">Web</NuxtLink>
+				<NuxtLink to="/modules/home">
+					Home
+				</NuxtLink>
 			</div>
 			<div>
-				<NuxtLink to="/mobile">Mobile</NuxtLink>
+				<NuxtLink to="/modules/profile">
+					Profile
+				</NuxtLink>
 			</div>
 		</div>
 	</div>

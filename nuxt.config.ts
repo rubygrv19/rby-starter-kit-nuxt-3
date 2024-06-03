@@ -3,11 +3,9 @@ export default defineNuxtConfig({
 	devtools: {
 		enabled: true
 	},
-	ssr: false,
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/google-fonts',
-		'@nuxtjs/ionic'
 	],
 	googleFonts: {
 		families: {
